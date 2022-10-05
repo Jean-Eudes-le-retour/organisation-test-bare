@@ -15,4 +15,7 @@ jobs:
         shell: bash
         
       - name: Add competitor to file
-        run: echo '${{ github.event.issue.body }}'
+        run: echo '${{ github.event.issue.body }}' | tr '\n' ' '
+        
+      - name: Get issue number to get a unique number
+        run: echo '${{ github.event.issue.number }}'
