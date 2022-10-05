@@ -23,3 +23,7 @@ jobs:
             git add competitors.txt
             git commit -m "Here comes a new challenger!"
       - run: git push
+
+      - uses: peter-evans/close-issue@v1
+        with:
+          comment: Here comes a new challenger! You have been added to the benchmark ranking.
