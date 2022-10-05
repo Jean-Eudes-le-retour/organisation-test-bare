@@ -4,19 +4,10 @@ on:
   issues:
     types: [labeled]
 jobs:
-  setup:
-    if: ${{ (github.event.label.name == 'accepted') && (github.event.label.name == 'participation') }}
+  add-competitor:
 
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
-        with:
-          node-version: 12
-
-      - uses: stefanbuck/github-issue-praser@v2
-        id: issue-parser
-        with:
-          template-path: .github/ISSUE_TEMPLATE/PARTICIPATION.yml 
-
-      - run: echo '${{ steps.issue-parser.outputs.jsonString }}'
+      - name: "dump github context"
+        run: echo '${{ toJSON(github.event) }}' | jq
+        shell: bash
