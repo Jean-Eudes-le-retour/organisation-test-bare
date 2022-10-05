@@ -10,9 +10,16 @@ jobs:
 
     runs-on: ubuntu-latest
     steps:
-      - name: Dump github context
-        run: echo '${{ toJSON(github.event) }}' | jq
-        shell: bash
+      - name: Checkout files
+        uses: actions/checkout@v2
         
       - name: Add competitor to file
         run: echo '${{ github.event.issue.body }}' | tr '\n' ' ' | sed 's/### GitHub repository link  /${{ github.event.issue.number }}:/' >> competitors.txt
+
+      - name: Commit files
+        run: |
+            git config user.email "bot@bot.com"
+            git config user.name "Iam Acomputer"
+            git add competitors.txt
+            git commit -m "Here comes a new challenger!"
+      - run: git push
