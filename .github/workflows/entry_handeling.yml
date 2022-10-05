@@ -18,7 +18,7 @@ jobs:
 
       - name: Commit files
         run: |
-            git config user.email "bot@bot.com"
+            git config user.email "bot@example.com"
             git config user.name "Iam Acomputer"
             git add competitors.txt
             git commit -m "Here comes a new challenger!"
