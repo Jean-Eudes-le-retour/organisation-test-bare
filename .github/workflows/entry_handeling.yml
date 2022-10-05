@@ -10,6 +10,9 @@ jobs:
 
     runs-on: ubuntu-latest
     steps:
+      - name: Dumb github.event
+        run: echo '${{ toJson(github.event) }}'
+        
       - name: Checkout files
         uses: actions/checkout@v2
         
