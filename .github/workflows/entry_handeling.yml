@@ -1,9 +1,11 @@
+name: Add competitor to list with issue
+
 on:
   issues:
     types: [labeled]
 jobs:
   setup:
-    if: ${{ github.event.label.name == 'accepted' && github.event.label.name == 'participation' }}
+    if: ${{ (github.event.label.name == 'accepted') && (github.event.label.name == 'participation') }}
 
     runs-on: ubuntu-latest
     steps:
