@@ -10,14 +10,14 @@ jobs:
 
     runs-on: ubuntu-latest
     steps:
-      - name: Dumb github.event
+      - name: Dump github.event
         run: echo '${{ toJson(github.event) }}'
         
       - name: Checkout files
         uses: actions/checkout@v2
         
       - name: Add competitor to file
-        run: echo $(echo '${{ github.event.issue.body }}' | tr '\n' ' ' | sed 's/### GitHub repository link  /${{ github.event.issue.number }}:/') >> competitors.txt
+        run: echo $(echo '${{ github.event.issue.body }}' | tr -d [:space:] | sed 's/###GitHubrepositorylink/${{ github.event.issue.number }}:/') >> competitors.txt
 
       - name: Commit files
         run: |
