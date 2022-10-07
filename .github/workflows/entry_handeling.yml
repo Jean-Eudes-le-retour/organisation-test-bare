@@ -1,4 +1,4 @@
-name: Add competitor to list with issue
+name: Add competitor to list when confirmed by tag
 
 on:
   issues:
